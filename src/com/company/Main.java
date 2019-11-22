@@ -8,6 +8,11 @@ public class Main {
 
     public static void main(String[] args) {
 	// write your code here
+	atmTransac();    
+	    
+    }
+	
+	public static void atmTransac(){
         double balance=30000.00;
         int pinn;
         Scanner kb=new Scanner(System.in);
@@ -15,19 +20,16 @@ public class Main {
         pinn=kb.nextInt();
         System.out.println("Select Transaction:\n Press 1 for Withdrawals.\n Press 2 for Deposit.\n Press 3 for Balance Enquiry\n" +
                 "Press 4 for Transfer\n Press 5 for Bills Payment");
-        int number;
-        number=kb.nextInt();
+        int number=kb.nextInt();
         switch (number)
         {
             case 1:
                 System.out.println("Select amount to withdraw:\n 1-#500 \n 2-#2000 \n 3-#4000 \n 4-#8000 \n 5-#10000 \n 6-#15000\n" +
                         "7-#20000 \n 8- Input other Amount:");
-                int number1;
-                number1=kb.nextInt();
+               int number1=kb.nextInt();
                if (number1==8)
                 {
-                    int subnum;
-                    subnum=kb.nextInt();
+                    int subnum=kb.nextInt();
                 }
                if (number1>balance){
                   System.out.println("Insufficent Funds!");
@@ -83,20 +85,27 @@ public class Main {
                 tamount=kb.nextShort();
 
                 break;
+	//Added by Lini
             case 5:
-                System.out.println("We are not ready for now");
+                System.out.println("Select Biller");
                 break;
             default:
                 System.out.println("Invalid Input!");
                 System.exit(0);
         }
-
-        System.out.println("Do You need a Receipt;\n 1- Yes \n 2- No");
+	//These three lines are not necessary, its repetitive
+        /*System.out.println("Do You need a Receipt;\n 1- Yes \n 2- No");
         int receipt;
-        receipt=kb.nextInt();
+        receipt=kb.nextInt();*/
         System.out.println("Do You need Want to perform another transaction;\n 1- Yes \n 2- No");
         int perform;
-       // perform=kb.nextInt();//looping back to the top
+        perform=kb.nextInt();
+		//looping back to the top
+		if (perform == 1){
+			//calling the function - recursive operation
+			atmTransac();
+			
+		else
             System.out.println("Transaction Ended, Please remove your card.");
 
 
